@@ -1,11 +1,17 @@
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header";
+import ReviewsPage from "./pages/ReviewsPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-       <h1>NC BoardGames</h1>
-      </header>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/reviews" element={<ReviewsPage />} />
+      </Routes>
     </div>
   );
 }
