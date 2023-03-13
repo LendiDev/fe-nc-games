@@ -1,11 +1,23 @@
 import { Link } from "react-router-dom";
 
-const NavigationBar = () => {
+const NavigationBar = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
+  const handleClickOnLink = () => {
+    setIsMobileNavOpened(false);
+  };
+
   return (
-    <nav>
-      <ul>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/reviews'>Reviews</Link></li>
+    <nav className={`main-header__nav ${isMobileNavOpened ? "opened" : ""}`}>
+      <ul className="main-header__links">
+        <li>
+          <Link to="/" onClick={handleClickOnLink}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/reviews" onClick={handleClickOnLink}>
+            Reviews
+          </Link>
+        </li>
       </ul>
     </nav>
   );
