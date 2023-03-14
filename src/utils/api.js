@@ -17,3 +17,7 @@ export const fetchReview = (review_id) => {
     return data.review;
   });
 };
+
+export const updateReview = (review_id, { inc_votes = 0 }) => {
+  return reviewsApi.patch(`/reviews/${review_id}`, { inc_votes: inc_votes });
+};
