@@ -10,7 +10,7 @@ const Reviews = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setIsLoading(false);
+    setIsLoading(true);
     setError(null);
     fetchReviews()
       .then((reviewsData) => {
