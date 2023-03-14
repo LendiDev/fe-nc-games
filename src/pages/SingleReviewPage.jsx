@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Comments from "../components/Comments";
 import ErrorSection from "../components/ErrorSection";
 import SingleReviewCard from "../components/SingleReviewCard";
-import { fetchCommentsForReview, fetchReview } from "../utils/api";
+import { fetchReview } from "../utils/api";
 
 const SingleReviewPage = () => {
   const { review_id } = useParams();
