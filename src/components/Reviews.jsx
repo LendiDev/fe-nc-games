@@ -7,17 +7,28 @@ import SectionHeader from "./SectionHeader";
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchReviews().then((reviewsData) => {
-      setIsLoading(false);
-      setReviews(reviewsData.reviews);
-    });
+    setIsLoading(false);
+    setError(null);
+    fetchReviews()
+      .then((reviewsData) => {
+        setIsLoading(false);
+        setReviews(reviewsData.reviews);
+      })
+      .catch(() => {
+        setError("Something went wrong couldn't fetch reviews.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   return (
     <section>
       <SectionHeader title="Reviews" />
+      {error && <p>{error}</p>}
       {isLoading ? (
         <p>Loading...</p>
       ) : (
