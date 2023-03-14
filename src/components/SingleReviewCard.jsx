@@ -27,7 +27,7 @@ const SingleReviewCard = ({
         <SectionHeader title={title} />
         <p>{categoryName}</p>
         <p>
-          {owner} on {formattedDate}
+          {owner} on <time dateTime={created_at}>{formattedDate}</time>
         </p>
         <img src={review_img_url} alt={title} />
         <p>{review_body}</p>

@@ -38,7 +38,7 @@ const ReviewCard = ({
             {categoryName}
           </Link>
           <p className="review-card__author__info">
-            {owner} on <time datetime={created_at}>{formattedDate}</time>
+            {owner} on <time dateTime={created_at}>{formattedDate}</time>
           </p>
           <p className="review-card__body">
             {shotDescription}
