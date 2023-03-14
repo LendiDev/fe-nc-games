@@ -40,7 +40,9 @@ const SingleReviewPage = () => {
       {review && (
         <>
           <SingleReviewCard review={review} />
-          <Comments review_id={review_id} />
+          <Comments
+            review_id={review_id}
+          />
         </>
       )}
     </main>
