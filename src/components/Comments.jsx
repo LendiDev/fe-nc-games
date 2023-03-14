@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchCommentsForReview } from "../utils/api";
+import { fetchCommentsForReview, fetchUsers } from "../utils/api";
+import CommentAdder from "./CommentAdder";
 import CommentCard from "./CommentCard";
 import SectionHeader from "./SectionHeader";
 
@@ -14,7 +15,7 @@ const Comments = ({ review_id }) => {
         setComments(comments);
       })
       .catch(() => {
-        setError("Something went wrong... Couldn't fetch comments.");
+        setError("Something went wrong. Couldn't fetch comments.");
       })
       .finally(() => {
         setIsLoading(false);
@@ -26,6 +27,9 @@ const Comments = ({ review_id }) => {
       <SectionHeader title="Comments" />
       {error && <p>{error}</p>}
       {isLoading && <p>Loading...</p>}
+      {!isLoading && !error && (
+        <CommentAdder setComments={setComments} review_id={review_id} />
+      )}
       {comments && comments.length > 0 && (
         <ul>
           {comments.map((comment) => (
