@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Header";
 import ReviewsPage from "./pages/ReviewsPage";
 import HomePage from "./pages/HomePage";
+import SingleReviewPage from "./pages/SingleReviewPage";
 
 function App() {
   const [isMobileNavOpened, setIsMobileNavOpened] = useState(false);
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/reviews" element={<ReviewsPage />} />
+        <Route path="/review/:review_id" element={<SingleReviewPage />} />
       </Routes>
     </div>
   );

@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { BiComment, BiUpvote, BiDownvote } from "react-icons/bi";
 import { dashCaseToHumanReadableString } from "../utils/dashCaseToHumanReadableString";
 import { truncateWithEllipses } from "../utils/truncateWithEllipses";
 import { formatCreatedAt } from "../utils/formatCreatedAt";
+import Votes from "./Votes";
+import CommentCount from "./CommentCount";
 
 const ReviewCard = ({
   review: {
@@ -50,25 +51,8 @@ const ReviewCard = ({
           </p>
 
           <div className="review-card__footer">
-            <div>
-              <BiComment className="review-card__comments__icon" />
-              {comment_count} comments
-            </div>
-            <div className="votes">
-              <button className="votes__downvote">
-                <BiDownvote
-                  className="votes__icon votes__downvote"
-                  aria-label="Down vote this review"
-                />
-              </button>
-              <p aria-label="rating">{votes}</p>
-              <button className="votes__upvote">
-                <BiUpvote
-                  className="votes__icon votes__upvote"
-                  aria-label="Up vote this review"
-                />
-              </button>
-            </div>
+            <CommentCount comment_count={comment_count} />
+            <Votes votes={votes} />
           </div>
         </div>
       </article>
