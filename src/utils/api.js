@@ -23,3 +23,9 @@ export const fetchCommentsForReview = (review_id) => {
     return data;
   });
 };
+
+export const fetchUser = (username) => {
+  return reviewsApi.get(`/users/${username}`).then(({ data }) => {
+    return data.user;
+  });
+};
