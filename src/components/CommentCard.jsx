@@ -20,7 +20,7 @@ const CommentCard = ({ comment: { body, author, votes, created_at } }) => {
           <img src={user.avatar_url} alt={`${author}'s avatar`} />
         )}
         <p>
-          {author} on <time dateTime={created_at}>{formattedCreatedAt}</time>
+          {author} <time dateTime={created_at}>{formattedCreatedAt}</time>
         </p>
         <p>{body}</p>
         <Votes votes={votes} />
