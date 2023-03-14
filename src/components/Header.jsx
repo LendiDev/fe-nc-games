@@ -1,6 +1,7 @@
 import { IoMenu, IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import NavigationBar from "./NavigationBar";
+import Profile from "./Profile";
 
 const Header = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
   const onHandlerMobileNavOpened = () => {
@@ -17,7 +18,7 @@ const Header = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
           isMobileNavOpened={isMobileNavOpened}
           setIsMobileNavOpened={setIsMobileNavOpened}
         />
-        <div className="clear-flex-1" />
+        <Profile/>
         <button
           className="mobile-nav__btn"
           onClick={onHandlerMobileNavOpened}
