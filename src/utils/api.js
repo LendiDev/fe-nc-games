@@ -18,6 +18,18 @@ export const fetchReview = (review_id) => {
   });
 };
 
+export const fetchCommentsForReview = (review_id) => {
+  return reviewsApi.get(`/reviews/${review_id}/comments`).then(({ data }) => {
+    return data;
+  });
+};
+
+export const fetchUser = (username) => {
+  return reviewsApi.get(`/users/${username}`).then(({ data }) => {
+    return data.user;
+  });
+};
+
 export const updateReview = (review_id, { inc_votes = 0 }) => {
   return reviewsApi.patch(`/reviews/${review_id}`, { inc_votes: inc_votes });
 };

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Comments from "../components/Comments";
 import ErrorSection from "../components/ErrorSection";
 import SingleReviewCard from "../components/SingleReviewCard";
-import { fetchReview } from "../utils/api";
+import { fetchCommentsForReview, fetchReview } from "../utils/api";
 
 const SingleReviewPage = () => {
   const { review_id } = useParams();
@@ -36,7 +37,14 @@ const SingleReviewPage = () => {
     <main>
       {error && <ErrorSection message={error.message} />}
       {isLoading && <p>Loading...</p>}
-      {review && <SingleReviewCard review={review} />}
+      {review && (
+        <>
+          <SingleReviewCard review={review} />
+          <Comments
+            review_id={review_id}
+          />
+        </>
+      )}
     </main>
   );
 };
