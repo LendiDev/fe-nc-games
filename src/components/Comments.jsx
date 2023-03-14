@@ -14,7 +14,7 @@ const Comments = ({ review_id }) => {
         setComments(comments);
       })
       .catch(() => {
-        setError("Something went wrong... Couldn't not fetch comments.");
+        setError("Something went wrong... Couldn't fetch comments.");
       })
       .finally(() => {
         setIsLoading(false);
