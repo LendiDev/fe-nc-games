@@ -8,14 +8,14 @@ const Votes = ({ votes }) => {
 
   return (
     <div className="votes">
-      <button className="votes__downvote">
+      <button className="votes__button votes__downvote">
         <BiDownvote
           className="votes__icon votes__downvote"
           aria-label="Down vote this review"
         />
       </button>
       <p aria-label="rating">{votesCount}</p>
-      <button className="votes__upvote">
+      <button className="votes__button votes__upvote">
         <BiUpvote
           className="votes__icon votes__upvote"
           aria-label="Up vote this review"

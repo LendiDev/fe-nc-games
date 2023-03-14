@@ -10,7 +10,7 @@ html {
   --color-primary: #2b7c2d;
   --color-secondary-500: #a53b95;
   --color-secondary-400: #a84f99;
-  
+
   --color-content: #000;
 
   --color-background: #fff;
@@ -65,9 +65,7 @@ button {
 }
 
 button {
-  background-color: transparent;
   cursor: pointer;
-  border: 0;
 }
 
 a {
@@ -285,24 +283,19 @@ a.review-card__category:hover {
   color: grey;
 }
 
-.votes__upvote {
+.votes__button {
+  background-color: transparent;
+  border: 0;
   padding: 0;
   border-radius: 6px;
-}
-.votes__upvote:hover {
-  border-radius: 6px;
   background-color: #eee;
+}
+
+.votes__upvote:hover {
   color: rgb(0, 123, 33);
 }
 
-.votes__downvote {
-  padding: 0;
-  border-radius: 6px;
-}
-
 .votes__downvote:hover {
-  border-radius: 6px;
-  background-color: #eee;
   color: red;
 }
 
