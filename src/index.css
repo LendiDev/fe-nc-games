@@ -291,6 +291,14 @@ a.review-card__category:hover {
   background-color: #eee;
 }
 
+.votes--voted_up {
+  color: rgb(0, 123, 33);
+}
+
+.votes--voted_down {
+  color: red;
+}
+
 .votes__upvote:hover {
   color: rgb(0, 123, 33);
 }
