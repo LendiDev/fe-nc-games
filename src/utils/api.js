@@ -30,6 +30,20 @@ export const fetchUser = (username) => {
   });
 };
 
+export const fetchUsers = () => {
+  return reviewsApi.get(`/users`).then(({ data }) => {
+    return data.users;
+  });
+};
+
 export const updateReview = (review_id, { inc_votes = 0 }) => {
   return reviewsApi.patch(`/reviews/${review_id}`, { inc_votes: inc_votes });
+};
+
+export const postNewComment = (review_id, comment) => {
+  return reviewsApi
+    .post(`/review/${review_id}/comments`, comment)
+    .then(({ data }) => {
+      return data.insertedComment;
+    });
 };
