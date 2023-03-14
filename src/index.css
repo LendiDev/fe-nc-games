@@ -254,14 +254,6 @@ a.review-card__category:hover {
   width: 100%;
 }
 
-.review-card__comments__icon {
-  vertical-align: middle;
-  width: 1.3rem;
-  height: 1.2rem;
-  margin-right: 0.25rem;
-  color: grey;
-}
-
 @media only screen and (min-width: 38rem) {
   .review-card {
     flex-direction: row;
@@ -312,6 +304,16 @@ a.review-card__category:hover {
   border-radius: 6px;
   background-color: #eee;
   color: red;
+}
+
+/* ------ Comment Count Component -------- */
+
+.comment-count__icon {
+  vertical-align: middle;
+  width: 1.3rem;
+  height: 1.2rem;
+  margin-right: 0.25rem;
+  color: grey;
 }
 
 /*----- Icons -------*/
