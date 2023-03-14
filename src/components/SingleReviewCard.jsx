@@ -6,6 +6,7 @@ import Votes from "./Votes";
 
 const SingleReviewCard = ({
   review: {
+    review_id,
     title,
     category,
     designer,
@@ -33,7 +34,7 @@ const SingleReviewCard = ({
         <p>
           Designed by: {designer} |
           <CommentsCount comment_count={comment_count} />
-          <Votes votes={votes} />
+          <Votes review_id={review_id} votes={votes} />
         </p>
       </article>
     </section>
