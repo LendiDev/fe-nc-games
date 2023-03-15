@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
-import { updateReview } from "../utils/api";
+import { updateComment, updateReview } from "../utils/api";
 
-const Votes = ({ review_id, votes: originalVotes }) => {
-  // TODO: handle comment votes
+const Votes = ({ review_id, comment_id, votes: originalVotes }) => {
   const [votesCount, setVotesCount] = useState(originalVotes);
 
   const votesDifference = votesCount - originalVotes;
@@ -23,8 +22,13 @@ const Votes = ({ review_id, votes: originalVotes }) => {
       return;
     }
 
+    const updateRequest = review_id ? updateReview : updateComment;
+    const id = review_id ? review_id : comment_id;
+
     setVotesCount((currentVotesCount) => currentVotesCount + increaseBy);
-    updateReview(review_id, { inc_votes: increaseBy }).catch(() => {
+    updateRequest(id, {
+      inc_votes: increaseBy,
+    }).catch(() => {
       setVotesCount((currentVotesCount) => currentVotesCount - increaseBy);
     });
   };
