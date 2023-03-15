@@ -138,6 +138,12 @@ p {
   gap: 1rem;
 }
 
+.main-header__links--current {
+  cursor: default;
+  color: var(--color-primary) !important;
+  border: 0 !important;
+}
+
 .main-header__links a {
   color: var(--color-content);
 }
@@ -217,6 +223,40 @@ p {
   .clear-flex-1 {
     flex: 1;
   }
+}
+
+/* ------- Categories Navigation -----*/
+
+.categories {
+  display: flex;
+  min-height: 3rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--color-content-background);
+  border-radius: 8px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.categories--loading {
+  width: 100%;
+  text-align: center;
+  align-self: center;
+}
+
+.categories__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+.categories__link {
+  color: var(--color-content);
+}
+
+.categories__link--current {
+  color: var(--color-primary) !important;
+  cursor: default;
+  border: 0 !important;
 }
 
 /* ------- Review Card -------- */
