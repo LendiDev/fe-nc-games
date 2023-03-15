@@ -10,8 +10,8 @@ const ReviewsPage = () => {
 
   return (
     <main>
-      <SectionHeader title="Reviews" />
       <CategoriesNav searchParams={searchParams} category={category_slug} />
+      <SectionHeader title="Reviews" />
       <ReviewsFilter
         searchParams={searchParams}
         setSearchParams={setSearchParams}

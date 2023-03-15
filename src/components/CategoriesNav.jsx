@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { fetchCategories } from "../utils/api";
 import { dashCaseToHumanReadableString } from "../utils/dashCaseToHumanReadableString";
 
@@ -7,6 +7,8 @@ const CategoriesNav = ({ category, searchParams }) => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const { pathname } = useLocation();
 
   useEffect(() => {
     setLoading(true);
@@ -31,6 +33,14 @@ const CategoriesNav = ({ category, searchParams }) => {
           <p className="categories--loading">Loading categories...</p>
         )}
         <ul className="categories__list" aria-label="Categories">
+          <li>
+            <Link
+              className={`categories__link${!category && pathname !== '/' ? "--current" : ""}`}
+              to={`/reviews`}
+            >
+              All
+            </Link>
+          </li>
           {categories.map(({ slug }) => (
             <li key={slug}>
               <Link
