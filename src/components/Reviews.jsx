@@ -4,7 +4,7 @@ import { fetchReviews } from "../utils/api";
 import ReviewCard from "./ReviewCard";
 import SectionHeader from "./SectionHeader";
 
-const Reviews = () => {
+const Reviews = ({category}) => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +12,7 @@ const Reviews = () => {
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    fetchReviews()
+    fetchReviews({category})
       .then((reviewsData) => {
         setIsLoading(false);
         setReviews(reviewsData.reviews);
@@ -23,7 +23,7 @@ const Reviews = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [category]);
 
   return (
     <section>
