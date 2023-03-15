@@ -2,6 +2,12 @@ import { sortByData } from "../data/sortByData";
 
 const ReviewsFilter = ({ searchParams, setSearchParams }) => {
   const order = searchParams.get("order");
+  const sortBy = searchParams.get("sort_by")
+    ? searchParams.get("sort_by")
+    : "created_at";
+
+  const orderButtonValue = order === "ASC" ? "ASC" : "DESC";
+  const toggledOrder = order !== "ASC" ? "ASC" : "DESC";
 
   const handleChangeSortBy = (e) => {
     const sortByValue = e.target.value;
@@ -12,10 +18,9 @@ const ReviewsFilter = ({ searchParams, setSearchParams }) => {
   };
 
   const handleToggleOrderBy = () => {
-    const newOrder = order === "ASC" ? "DESC" : "ASC";
     setSearchParams((params) => ({
       ...Object.fromEntries(params),
-      order: newOrder,
+      order: toggledOrder,
     }));
   };
 
@@ -28,18 +33,20 @@ const ReviewsFilter = ({ searchParams, setSearchParams }) => {
         className="reviews-filter__select"
         id="sort_by"
         onChange={handleChangeSortBy}
+        defaultValue={sortBy}
       >
-        {sortByData.map(({ title, value }) => (
-          <option key={title} value={value}>
-            {title}
+        {sortByData.map(({ label, value }) => (
+          <option key={label} value={value} >
+            {label}
           </option>
         ))}
       </select>
       <button
         className={`reviews-filter__button`}
         onClick={handleToggleOrderBy}
+        aria-label={`Order by ${orderButtonValue}. Switch to ${toggledOrder}`}
       >
-        {order === "ASC" ? "DESC" : "ASC"}
+        {orderButtonValue}
       </button>
     </section>
   );

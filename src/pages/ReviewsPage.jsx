@@ -6,14 +6,16 @@ import SectionHeader from "../components/SectionHeader";
 
 const ReviewsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const { category_slug } = useParams();
 
   return (
     <main>
       <SectionHeader title="Reviews" />
-      <CategoriesNav category={category_slug} />
-      <ReviewsFilter searchParams={searchParams} setSearchParams={setSearchParams} />
+      <CategoriesNav searchParams={searchParams} category={category_slug} />
+      <ReviewsFilter
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+      />
       <Reviews category={category_slug} searchParams={searchParams} />
     </main>
   );

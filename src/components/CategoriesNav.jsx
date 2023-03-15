@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { fetchCategories } from "../utils/api";
 import { dashCaseToHumanReadableString } from "../utils/dashCaseToHumanReadableString";
 
-const CategoriesNav = ({ category }) => {
+const CategoriesNav = ({ category, searchParams }) => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -37,7 +37,7 @@ const CategoriesNav = ({ category }) => {
                 className={`categories__link${
                   category === slug ? "--current" : ""
                 }`}
-                to={`/reviews/${slug}`}
+                to={`/reviews/${slug}?${searchParams}`}
               >
                 {dashCaseToHumanReadableString(slug)}
               </Link>

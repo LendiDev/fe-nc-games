@@ -1,8 +1,8 @@
 export const sortByData = [
-  { title: "Title", value: "title" },
-  { title: "Category", value: "category" },
-  { title: "Date", value: "created_at" },
-  { title: "Author", value: "owner" },
-  { title: "Rating", value: "votes" },
-  { title: "# of Comments", value: "comment_count" },
+  { label: "Date", value: "created_at" },
+  { label: "Title", value: "title" },
+  { label: "Category", value: "category" },
+  { label: "Author", value: "owner" },
+  { label: "Rating", value: "votes" },
+  { label: "# of Comments", value: "comment_count" },
 ];
