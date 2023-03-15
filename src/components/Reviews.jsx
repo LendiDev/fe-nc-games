@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchReviews } from "../utils/api";
 import ReviewCard from "./ReviewCard";
 
-const Reviews = ({ searchParams }) => {
+const Reviews = ({ searchParams, category }) => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,7 +10,7 @@ const Reviews = ({ searchParams }) => {
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    fetchReviews({ searchParams })
+    fetchReviews({category, searchParams})
       .then((reviewsData) => {
         setIsLoading(false);
         setReviews(reviewsData.reviews);
@@ -21,7 +21,7 @@ const Reviews = ({ searchParams }) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [searchParams]);
+  }, [category, searchParams]);
 
   return (
     <section>

@@ -1,4 +1,5 @@
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
+import CategoriesNav from "../components/CategoriesNav";
 import Reviews from "../components/Reviews";
 import ReviewsFilter from "../components/ReviewsFilter";
 import SectionHeader from "../components/SectionHeader";
@@ -6,11 +7,14 @@ import SectionHeader from "../components/SectionHeader";
 const ReviewsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const { category_slug } = useParams();
+
   return (
     <main>
       <SectionHeader title="Reviews" />
+      <CategoriesNav category={category_slug} />
       <ReviewsFilter searchParams={searchParams} setSearchParams={setSearchParams} />
-      <Reviews searchParams={searchParams} />
+      <Reviews category={category_slug} searchParams={searchParams} />
     </main>
   );
 };

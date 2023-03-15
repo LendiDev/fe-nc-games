@@ -9,6 +9,8 @@ import SingleReviewPage from "./pages/SingleReviewPage";
 function App() {
   const [isMobileNavOpened, setIsMobileNavOpened] = useState(false);
 
+  const reviewsPageElement = <ReviewsPage />;
+
   return (
     <div className="App">
       <Header
@@ -17,7 +19,8 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/reviews" element={<ReviewsPage />} />
+        <Route path="/reviews" element={reviewsPageElement} />
+        <Route path="/reviews/:category_slug" element={reviewsPageElement} />
         <Route path="/review/:review_id" element={<SingleReviewPage />} />
       </Routes>
     </div>

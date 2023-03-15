@@ -2,12 +2,18 @@ import axios from "axios";
 
 const reviewsApi = axios.create({ baseURL: "https://nc-games.lendi.dev/api" });
 
-export const fetchReviews = ({ searchParams = {} }) => {
+export const fetchCategories = () => {
+  return reviewsApi.get("/categories").then(({ data }) => {
+    return data.categories;
+  });
+};
+
+export const fetchReviews = ({ category, limit = 50, searchParams = {} }) => {
   const searchParamsObject = Object.fromEntries(searchParams);
 
   return reviewsApi
     .get("/reviews", {
-      params: { limit: 50, ...searchParamsObject },
+      params: { category, limit, ...searchParamsObject },
     })
     .then(({ data }) => {
       return data;
