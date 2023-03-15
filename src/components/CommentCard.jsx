@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
-import { fetchUser, postNewComment } from "../utils/api";
 import { formatCreatedAt } from "../utils/formatCreatedAt";
 import Votes from "./Votes";
 
-const CommentCard = ({ comment: { body, author, votes, created_at } }) => {
+const CommentCard = ({ comment: { comment_id, body, author, votes, created_at } }) => {
   const formattedCreatedAt = formatCreatedAt(created_at);
 
   return (
@@ -14,7 +12,7 @@ const CommentCard = ({ comment: { body, author, votes, created_at } }) => {
           {author} <time dateTime={created_at}>{formattedCreatedAt}</time>
         </p>
         <p>{body}</p>
-        <Votes votes={votes} />
+        <Votes comment_id={comment_id} votes={votes} />
       </article>
     </li>
   );

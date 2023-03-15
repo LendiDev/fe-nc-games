@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { fetchCommentsForReview, fetchUsers } from "../utils/api";
-import CommentAdder from "./CommentAdder";
+import { fetchCommentsForReview } from "../utils/api";
 import CommentCard from "./CommentCard";
 import SectionHeader from "./SectionHeader";
 
-const Comments = ({ review_id }) => {
-  const [comments, setComments] = useState(null);
+const Comments = ({ review_id, comments, setComments }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -20,16 +18,13 @@ const Comments = ({ review_id }) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [review_id]);
+  }, [review_id, setComments]);
 
   return (
     <section>
       <SectionHeader title="Comments" />
       {error && <p>{error}</p>}
       {isLoading && <p>Loading...</p>}
-      {!isLoading && !error && (
-        <CommentAdder setComments={setComments} review_id={review_id} />
-      )}
       {comments && comments.length > 0 && (
         <ul>
           {comments.map((comment) => (

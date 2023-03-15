@@ -2,7 +2,7 @@ import { BiComment } from "react-icons/bi";
 
 const CommentCount = ({ comment_count }) => {
   return (
-    <div>
+    <div className="comment-count">
       <BiComment className="comment-count__icon" />
       {comment_count} comments
     </div>
