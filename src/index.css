@@ -13,6 +13,7 @@ html {
   --color-secondary-400: #a84f99;
 
   --color-content: #000;
+  --color-content-contrast: #fff;
 
   --color-background: #fff;
   --color-content-background: #ffffff;
@@ -294,6 +295,39 @@ a.review-card__category:hover {
     max-width: 15rem;
     height: auto;
   }
+}
+
+/* ---- Reviews Filter ------ */
+
+.reviews-filter {
+  display: flex;
+  padding: 0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  background-color: var(--color-content-background);
+  border-radius: 8px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.reviews-filter__label {
+  background-color: var(--color-primary);
+  padding: 0.75rem;
+  border: 1px solid hsla(0, 0%, 85%, 0.4);
+  color: var(--color-content-contrast);
+}
+
+.reviews-filter__select {
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border: 0;
+  background-color: transparent;
+}
+
+.reviews-filter__button {
+  border: 0;
+  margin: 0.5rem 0;
+  border-radius: 6px;
 }
 
 /* ---- Single Review page ------- */
