@@ -23,7 +23,7 @@ const Votes = ({ review_id, comment_id, votes: originalVotes }) => {
     }
 
     const updateRequest = review_id ? updateReview : updateComment;
-    const id = review_id ? review_id : comment_id;
+    const id = review_id || comment_id;
 
     setVotesCount((currentVotesCount) => currentVotesCount + increaseBy);
     updateRequest(id, {
