@@ -42,8 +42,12 @@ export const updateReview = (review_id, { inc_votes = 0 }) => {
 
 export const postNewComment = (review_id, comment) => {
   return reviewsApi
-    .post(`/review/${review_id}/comments`, comment)
+    .post(`/reviews/${review_id}/comments`, comment)
     .then(({ data }) => {
       return data.insertedComment;
     });
+};
+
+export const updateComment = (comment_id, { inc_votes = 0 }) => {
+  return reviewsApi.patch(`/comments/${comment_id}`, { inc_votes: inc_votes });
 };
