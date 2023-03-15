@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { fetchCategories } from "../utils/api";
 import { dashCaseToHumanReadableString } from "../utils/dashCaseToHumanReadableString";
 
-const CategoriesNav = ({ category, searchParams }) => {
+const CategoriesNav = ({ category, searchParams = '' }) => {
   const [categories, setCategories] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
