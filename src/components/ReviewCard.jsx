@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { dashCaseToHumanReadableString } from "../utils/dashCaseToHumanReadableString";
 import { truncateWithEllipses } from "../utils/truncateWithEllipses";
 import { formatCreatedAt } from "../utils/formatCreatedAt";
+import { IoPersonCircleOutline } from "react-icons/io5";
 import Votes from "./Votes";
 import CommentCount from "./CommentCount";
 
@@ -38,6 +39,7 @@ const ReviewCard = ({
             {categoryName}
           </Link>
           <p className="review-card__author__info">
+            <IoPersonCircleOutline className="single-review-author__icon" />
             {owner} <time dateTime={created_at}>{formattedDate}</time>
           </p>
           <p className="review-card__body">
