@@ -3,8 +3,7 @@ import { fetchCommentsForReview } from "../utils/api";
 import CommentCard from "./CommentCard";
 import SectionHeader from "./SectionHeader";
 
-const Comments = ({ review_id }) => {
-  const [comments, setComments] = useState(null);
+const Comments = ({ review_id, comments, setComments }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,12 +13,12 @@ const Comments = ({ review_id }) => {
         setComments(comments);
       })
       .catch(() => {
-        setError("Something went wrong... Couldn't fetch comments.");
+        setError("Something went wrong. Couldn't fetch comments.");
       })
       .finally(() => {
         setIsLoading(false);
       });
-  }, [review_id]);
+  }, [review_id, setComments]);
 
   return (
     <section>

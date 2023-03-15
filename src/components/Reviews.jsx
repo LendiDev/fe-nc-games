@@ -18,7 +18,7 @@ const Reviews = () => {
         setReviews(reviewsData.reviews);
       })
       .catch(() => {
-        setError("Something went wrong couldn't fetch reviews.");
+        setError("Something went wrong. couldn't fetch reviews.");
       })
       .finally(() => {
         setIsLoading(false);
