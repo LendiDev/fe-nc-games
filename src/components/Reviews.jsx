@@ -10,6 +10,7 @@ const Reviews = ({ searchParams, category }) => {
   useEffect(() => {
     setIsLoading(true);
     setError(null);
+    setReviews([]);
     fetchReviews({category, searchParams})
       .then((reviewsData) => {
         setIsLoading(false);
