@@ -3,15 +3,20 @@ import { Link } from "react-router-dom";
 import { fetchCategories } from "../utils/api";
 import { dashCaseToHumanReadableString } from "../utils/dashCaseToHumanReadableString";
 
-const CategoriesNav = ({category}) => {
+const CategoriesNav = ({ category }) => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
+    setError(false);
     fetchCategories()
       .then((categories) => {
         setCategories(categories);
+      })
+      .catch(() => {
+        setError("Something went wrong... Couldn't fetch categories");
       })
       .finally(() => {
         setLoading(false);
@@ -21,11 +26,19 @@ const CategoriesNav = ({category}) => {
   return (
     <section>
       <nav className="categories">
-        {isLoading && <p className="categories--loading">Loading categories...</p>}
+        {error && <p className="categories--loading">{error}</p>}
+        {isLoading && (
+          <p className="categories--loading">Loading categories...</p>
+        )}
         <ul className="categories__list" aria-label="Categories">
           {categories.map(({ slug }) => (
             <li key={slug}>
-              <Link className={`categories__link${category === slug ? '--current' : ''}`} to={`/reviews/${slug}`}>
+              <Link
+                className={`categories__link${
+                  category === slug ? "--current" : ""
+                }`}
+                to={`/reviews/${slug}`}
+              >
                 {dashCaseToHumanReadableString(slug)}
               </Link>
             </li>
