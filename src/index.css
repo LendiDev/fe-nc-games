@@ -138,6 +138,12 @@ p {
   gap: 1rem;
 }
 
+.main-header__links--current {
+  cursor: default;
+  color: var(--color-primary) !important;
+  border: 0 !important;
+}
+
 .main-header__links a {
   color: var(--color-content);
 }
@@ -244,7 +250,7 @@ p {
 }
 
 .categories__link {
-  color: var(--color-content)
+  color: var(--color-content);
 }
 
 .categories__link--current {
