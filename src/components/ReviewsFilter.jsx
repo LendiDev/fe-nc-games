@@ -1,4 +1,5 @@
 import { sortByData } from "../data/sortByData";
+import { RiSortAsc, RiSortDesc } from "react-icons/ri";
 
 const ReviewsFilter = ({ searchParams, setSearchParams }) => {
   const order = searchParams.get("order");
@@ -36,7 +37,7 @@ const ReviewsFilter = ({ searchParams, setSearchParams }) => {
         defaultValue={sortBy}
       >
         {sortByData.map(({ label, value }) => (
-          <option key={label} value={value} >
+          <option key={label} value={value}>
             {label}
           </option>
         ))}
@@ -46,7 +47,11 @@ const ReviewsFilter = ({ searchParams, setSearchParams }) => {
         onClick={handleToggleOrderBy}
         aria-label={`Order by ${orderButtonValue}. Switch to ${toggledOrder}`}
       >
-        {orderButtonValue}
+        {order === "ASC" ? (
+          <RiSortAsc className="icon--sm" />
+        ) : (
+          <RiSortDesc className="icon--sm" />
+        )}
       </button>
     </section>
   );

@@ -39,7 +39,7 @@ const CategoriesNav = ({ category, searchParams }) => {
                 className={`categories__link${
                   !category && pathname !== "/" ? "--current" : ""
                 }`}
-                to={`/reviews`}
+                to={`/reviews?${searchParams}`}
               >
                 All
               </Link>
