@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { errors } from "../data/errors";
 import { fetchReviews } from "../utils/api";
 import LoadingSpinner from "./LoadingSpinner";
 import ReviewCard from "./ReviewCard";
@@ -17,16 +18,14 @@ const Reviews = ({ searchParams, category, error, setError }) => {
         setReviews(reviewsData.reviews);
       })
       .catch((error) => {
-        if (error.response.status === 404) {
+        if (error?.response?.status === 404) {
           if (error.response.data.message.includes("Category")) {
-            setError({
-              title: "Category not found.",
-              message:
-                "Oops, it seems like the reviews category you are looking for doesn't exist",
-            });
+            setError(errors.category.notFound);
           }
+        } else if (error?.response?.status === 400) {
+          setError(errors.reviews.badRequest);
         } else {
-          setError("Something went wrong. couldn't fetch reviews.");
+          setError(errors.reviews.notFound);
         }
       })
       .finally(() => {

@@ -24,7 +24,7 @@ const UserLogout = () => {
     <main>
       <section className="login">
         <p>Logging out... </p>
-        <LoadingSpinner />
+        <LoadingSpinner flexLoading />
       </section>
     </main>
   );

@@ -1,10 +1,10 @@
+import { errors } from "../data/errors";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchReview } from "../utils/api";
 
 import CommentAdder from "../components/CommentAdder";
 import Comments from "../components/Comments";
-import ErrorSection from "../components/ErrorSection";
 import SingleReviewCard from "../components/SingleReviewCard";
 import ErrorPage from "./ErrorPage";
 import LoadingSpinner from "../components/LoadingSpinner";
@@ -23,15 +23,9 @@ const SingleReviewPage = () => {
       })
       .catch((error) => {
         if (error.response.status === 404 || error.response.status === 400) {
-          setError({
-            title: "Review not found.",
-            message:
-              "Oops, it seems like the review you are looking for doesn't exist",
-          });
+          setError(errors.review.notFound);
         } else {
-          setError({
-            message: "Couldn't fetch a review.",
-          });
+          setError("Couldn't fetch a review.");
         }
       })
       .finally(() => {
@@ -47,14 +41,20 @@ const SingleReviewPage = () => {
     );
   }
 
-  if (error?.title && error?.message) {
-    return <ErrorPage title={error.title} message={error.message} />;
+  if (error?.header && error?.message && error?.statusCode) {
+    return (
+      <ErrorPage
+        statusCode={error.statusCode}
+        header={error.header}
+        message={error.message}
+      />
+    );
   }
 
   return (
     <main>
       <div className="single-review-page">
-        {error && <ErrorSection message={error.message} />}
+        {error && <p>{error}</p>}
         {review && (
           <>
             <SingleReviewCard

@@ -11,8 +11,14 @@ const ReviewsPage = () => {
   const [error, setError] = useState(null);
   const { category_slug } = useParams();
 
-  if (error?.title && error?.message) {
-    return <ErrorPage title={error.title} message={error.message} />;
+  if (error?.header && error?.message && error?.statusCode) {
+    return (
+      <ErrorPage
+        statusCode={error.statusCode}
+        header={error.header}
+        message={error.message}
+      />
+    );
   }
 
   return (

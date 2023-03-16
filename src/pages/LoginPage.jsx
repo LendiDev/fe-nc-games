@@ -50,7 +50,7 @@ const LoginPage = () => {
     <main>
       <SectionHeader title="Login" />
       <section className="login">
-        {isLoading && <LoadingSpinner />}
+        {isLoading && <LoadingSpinner flexLoading />}
         {error && <p>{error}</p>}
         {users.length > 0 && !user && (
           <form className="login__form" onSubmit={handleSubmitLogin}>
