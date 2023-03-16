@@ -13,6 +13,7 @@ html {
   --color-secondary-400: #a84f99;
 
   --color-content: #000;
+  --color-content-contrast: #fff;
 
   --color-background: #fff;
   --color-content-background: #ffffff;
@@ -230,16 +231,18 @@ p {
 .categories {
   display: flex;
   min-height: 3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   background-color: var(--color-content-background);
   border-radius: 8px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 .categories--loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  text-align: center;
-  align-self: center;
 }
 
 .categories__list {
@@ -334,6 +337,42 @@ a.review-card__category:hover {
     max-width: 15rem;
     height: auto;
   }
+}
+
+/* ---- Reviews Filter ------ */
+
+.reviews-filter {
+  display: flex;
+  padding: 0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  background-color: var(--color-content-background);
+  border-radius: 8px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.reviews-filter__label {
+  background-color: var(--color-primary);
+  padding: 0.75rem;
+  border: 1px solid hsla(0, 0%, 85%, 0.4);
+  color: var(--color-content-contrast);
+}
+
+.reviews-filter__select {
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border: 0;
+  background-color: transparent;
+}
+
+.reviews-filter__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  margin: 0.5rem 0;
+  border-radius: 6px;
 }
 
 /* ---- Single Review page ------- */
@@ -512,6 +551,12 @@ a.review-card__category:hover {
   width: 1.5rem;
 }
 
+.icon--sm {
+  height: 1.25rem;
+  width: 1.25rem;
+  vertical-align: middle;
+}
+
 .icon--small {
   height: 1rem;
   width: 1rem;
@@ -519,7 +564,7 @@ a.review-card__category:hover {
 
 /*----- Loading spinner ------*/
 
-.loader {
+.loading-spinner {
   border: 5px solid #f3f3f3;
   border-top: 5px solid var(--color-primary);
   border-radius: 50%;

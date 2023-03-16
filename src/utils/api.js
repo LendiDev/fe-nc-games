@@ -7,10 +7,13 @@ export const fetchCategories = () => {
     return data.categories;
   });
 };
-export const fetchReviews = ({ category, limit = 50 }) => {
+
+export const fetchReviews = ({ category, limit = 50, searchParams = {} }) => {
+  const searchParamsObject = Object.fromEntries(searchParams);
+
   return reviewsApi
     .get("/reviews", {
-      params: { category, limit },
+      params: { category, limit, ...searchParamsObject },
     })
     .then(({ data }) => {
       return data;

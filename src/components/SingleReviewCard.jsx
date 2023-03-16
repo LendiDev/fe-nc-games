@@ -49,7 +49,7 @@ const SingleReviewCard = ({
         <p className="review-card__body">Designed by: {designer}</p>
         <div className="review-card__footer">
           <CommentsCount
-            comment_count={commentsLength ? commentsLength : comment_count}
+            comment_count={commentsLength || comment_count}
           />
           <Votes review_id={review_id} votes={votes} />
         </div>
