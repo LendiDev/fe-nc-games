@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
 import SectionHeader from "../components/SectionHeader";
 import { UserContext } from "../contexts/User.context";
@@ -26,11 +27,13 @@ const LoginPage = () => {
         .finally(() => {
           setIsLoading(false);
         });
-    } 
+    }
   }, [user]);
 
   const handleSubmitLogin = (e) => {
     e.preventDefault();
+
+    if (!userNameSelected) return;
 
     const userSelected = users.find(
       (user) => user.username === userNameSelected
@@ -57,12 +60,9 @@ const LoginPage = () => {
               id="username"
               onChange={handleChangeUserNameSelected}
             >
+              <option>Select username...</option>
               {users.map(({ username }) => (
-                <option
-                  className="login__select__option"
-                  key={username}
-                  value={username}
-                >
+                <option key={username} value={username}>
                   {username}
                 </option>
               ))}
@@ -73,8 +73,9 @@ const LoginPage = () => {
           </form>
         )}
         {user && (
-          <div>
+          <div className="login--logged-in">
             <p>You logged in as {user.username}</p>
+            <Link to="/reviews">Browse Reviews</Link>
           </div>
         )}
       </section>

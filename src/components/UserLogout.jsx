@@ -8,13 +8,17 @@ const UserLogout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+    
     const timer = setTimeout(() => {
       setUser(null);
       navigate("/");
     }, 1250);
 
     return () => clearTimeout(timer);
-  }, [navigate, setUser]);
+  }, [navigate, setUser, user]);
 
   return (
     <main>

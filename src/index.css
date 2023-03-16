@@ -242,6 +242,13 @@ p {
   border-radius: 6px;
 }
 
+.login--logged-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
 .logout__link {
   color: var(--color-secondary-400);
   font-size: 0.9rem;
