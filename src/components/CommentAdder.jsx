@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/User.context";
 import { postNewComment } from "../utils/api";
 import LoadingSpinner from "./LoadingSpinner";
@@ -33,6 +34,14 @@ const CommentAdder = ({ review_id, setComments }) => {
   const handleCommentBodyChange = (e) => {
     setCommentBody(e.target.value);
   };
+
+  if (!user) {
+    return <div className="comment-adder__login-first">
+      <p>
+      Please <Link to='/user/login'>log in</Link> to your account to leave a comment on this review.
+      </p>
+    </div>
+  }
 
   return (
     <form className="comment-adder__form" onSubmit={handleSubmitComment}>

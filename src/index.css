@@ -572,6 +572,13 @@ a.review-card__category:hover {
   gap: 1rem;
 }
 
+.comment-adder__login-first {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0 1rem 0;
+}
+
 .comment-adder__textarea {
   width: 100%;
   min-height: 5rem;
