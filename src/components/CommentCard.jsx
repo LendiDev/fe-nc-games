@@ -12,9 +12,10 @@ const CommentCard = ({
   const [isDeleted, setIsDeleted] = useState(null);
 
   const { user } = useContext(UserContext);
+  const loggedInUserName = user?.username || '';
 
   const formattedCreatedAt = formatCreatedAt(created_at);
-  const isLoggedInUserComment = author === user.username;
+  const isLoggedInUserComment = author === loggedInUserName;
 
   const handleCommentDeletion = () => {
     setPending(true);
