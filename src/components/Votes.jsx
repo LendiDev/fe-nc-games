@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import { updateComment, updateReview } from "../utils/api";
 
-const Votes = ({ review_id, comment_id, votes: originalVotes }) => {
+const Votes = ({ review_id, comment_id, votes: originalVotes, dividerPosition = '' }) => {
   const [votesCount, setVotesCount] = useState(originalVotes);
 
   const votesDifference = votesCount - originalVotes;
@@ -41,7 +41,7 @@ const Votes = ({ review_id, comment_id, votes: originalVotes }) => {
       : "votes--voted_down";
 
   return (
-    <div className="votes">
+    <div className={`votes votes__divider--${dividerPosition}`}>
       <button
         className="votes__button votes__downvote"
         onClick={handleDownVote}

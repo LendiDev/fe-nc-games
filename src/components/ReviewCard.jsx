@@ -54,7 +54,7 @@ const ReviewCard = ({
 
           <div className="review-card__footer">
             <CommentCount comment_count={comment_count} />
-            <Votes review_id={review_id} votes={votes} />
+            <Votes review_id={review_id} votes={votes} dividerPosition='left' />
           </div>
         </div>
       </article>

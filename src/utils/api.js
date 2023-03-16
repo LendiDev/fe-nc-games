@@ -59,3 +59,7 @@ export const postNewComment = (review_id, comment) => {
 export const updateComment = (comment_id, { inc_votes = 0 }) => {
   return reviewsApi.patch(`/comments/${comment_id}`, { inc_votes: inc_votes });
 };
+
+export const deleteComment = (comment_id) => {
+  return reviewsApi.delete(`/comments/${comment_id}`);
+};
