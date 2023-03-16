@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=auto");
 
 *,
 *:before,
@@ -235,14 +235,6 @@ p {
   background-color: var(--color-content-background);
   border-radius: 8px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
-}
-
-.categories--loading {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
 }
 
 .categories__list {
@@ -534,6 +526,29 @@ a.review-card__category:hover {
   background-color: silver;
 }
 
+/*----- Error Page/Component ----- */
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+.error-page__image {
+  max-width: 25rem;
+}
+
+.error-page__button {
+  margin-top: 1rem;
+  display: inline-block;
+  border: 0;
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
 /*----- Icons -------*/
 
 .icon--extra-large {
@@ -563,6 +578,25 @@ a.review-card__category:hover {
 }
 
 /*----- Loading spinner ------*/
+
+.loading-fullscreen {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loading-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 
 .loading-spinner {
   border: 5px solid #f3f3f3;

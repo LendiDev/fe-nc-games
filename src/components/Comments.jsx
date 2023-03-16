@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchCommentsForReview } from "../utils/api";
 import CommentCard from "./CommentCard";
+import LoadingSpinner from "./LoadingSpinner";
 import SectionHeader from "./SectionHeader";
 
 const Comments = ({ review_id, comments, setComments }) => {
@@ -24,7 +25,7 @@ const Comments = ({ review_id, comments, setComments }) => {
     <section>
       <SectionHeader title="Comments" />
       {error && <p>{error}</p>}
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <LoadingSpinner what={"comments"} flexLoading />}
       {comments && comments.length > 0 && (
         <ul>
           {comments.map((comment) => (

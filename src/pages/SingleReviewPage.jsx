@@ -6,6 +6,8 @@ import CommentAdder from "../components/CommentAdder";
 import Comments from "../components/Comments";
 import ErrorSection from "../components/ErrorSection";
 import SingleReviewCard from "../components/SingleReviewCard";
+import ErrorPage from "./ErrorPage";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const SingleReviewPage = () => {
   const { review_id } = useParams();
@@ -22,7 +24,9 @@ const SingleReviewPage = () => {
       .catch((error) => {
         if (error.response.status === 404 || error.response.status === 400) {
           setError({
-            message: "Review not found.",
+            title: "Review not found.",
+            message:
+              "Oops, it seems like the review you are looking for doesn't exist",
           });
         } else {
           setError({
@@ -35,11 +39,22 @@ const SingleReviewPage = () => {
       });
   }, [review_id]);
 
+  if (isLoading) {
+    return (
+      <main>
+        <LoadingSpinner what="review" fullscreen />
+      </main>
+    );
+  }
+
+  if (error?.title && error?.message) {
+    return <ErrorPage title={error.title} message={error.message} />;
+  }
+
   return (
     <main>
       <div className="single-review-page">
         {error && <ErrorSection message={error.message} />}
-        {isLoading && <p>Loading...</p>}
         {review && (
           <>
             <SingleReviewCard

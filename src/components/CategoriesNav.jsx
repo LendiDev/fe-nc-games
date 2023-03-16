@@ -30,11 +30,7 @@ const CategoriesNav = ({ category, searchParams = "" }) => {
     <section>
       <nav className="categories">
         {error && <p className="categories--loading">{error}</p>}
-        {isLoading && (
-          <div className="categories--loading" aria-label="Loading categories...">
-            <LoadingSpinner />
-          </div>
-        )}
+        {isLoading && <LoadingSpinner what="categories" flexLoading />}
         {categories && (
           <ul className="categories__list" aria-label="Categories">
             <li>
