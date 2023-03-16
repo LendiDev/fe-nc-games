@@ -242,6 +242,19 @@ p {
   border-radius: 6px;
 }
 
+.logout__link {
+  color: var(--color-secondary-400);
+  font-size: 0.9rem;
+}
+
+@media only screen and (min-width: 38rem) {
+  .login__form {
+    width: 15rem;
+    justify-content: center;
+    align-self: center;
+  }
+}
+
 /* ------- Mobile Navigation Button -------- */
 
 .mobile-nav__btn {
