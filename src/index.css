@@ -594,6 +594,17 @@ a.review-card__category:hover {
   background-color: silver;
 }
 
+/*---- Comment card -----*/
+
+.comment-card__text--error {
+  color: rgb(214, 0, 0);
+}
+
+.comment-card__text--deleted {
+  font-style: italic;
+  color: rgb(78, 77, 77);
+}
+
 /*----- Icons -------*/
 
 .icon--extra-large {
