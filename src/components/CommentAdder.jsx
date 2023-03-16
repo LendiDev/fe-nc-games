@@ -15,7 +15,7 @@ const CommentAdder = ({ review_id, setComments }) => {
 
     setIsLoading(true);
     setError(null);
-    postNewComment(review_id, { body: commentBody, user: user.username })
+    postNewComment(review_id, { body: commentBody, username: user.username })
       .then((comment) => {
         setComments((comments) => {
           return [{ ...comment, created_at: "just now" }, ...comments];
