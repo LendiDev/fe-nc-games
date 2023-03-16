@@ -1,6 +1,6 @@
 const LoadingSpinner = ({ size, borderWidth }) => (
   <div
-    className="loader"
+    className="loading-spinner"
     style={{ width: size, height: size, borderWidth }}
   ></div>
 );

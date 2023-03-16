@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { fetchCategories } from "../utils/api";
 import { dashCaseToHumanReadableString } from "../utils/dashCaseToHumanReadableString";
+import LoadingSpinner from "./LoadingSpinner";
 
-const CategoriesNav = ({ category }) => {
-  const [categories, setCategories] = useState([]);
+const CategoriesNav = ({ category, searchParams = "" }) => {
+  const [categories, setCategories] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const { pathname } = useLocation();
 
   useEffect(() => {
     setLoading(true);
@@ -28,22 +31,36 @@ const CategoriesNav = ({ category }) => {
       <nav className="categories">
         {error && <p className="categories--loading">{error}</p>}
         {isLoading && (
-          <p className="categories--loading">Loading categories...</p>
+          <div className="categories--loading" aria-label="Loading categories...">
+            <LoadingSpinner />
+          </div>
         )}
-        <ul className="categories__list" aria-label="Categories">
-          {categories.map(({ slug }) => (
-            <li key={slug}>
+        {categories && (
+          <ul className="categories__list" aria-label="Categories">
+            <li>
               <Link
                 className={`categories__link${
-                  category === slug ? "--current" : ""
+                  !category && pathname !== "/" ? "--current" : ""
                 }`}
-                to={`/reviews/${slug}`}
+                to={`/reviews?${searchParams}`}
               >
-                {dashCaseToHumanReadableString(slug)}
+                All
               </Link>
             </li>
-          ))}
-        </ul>
+            {categories.map(({ slug }) => (
+              <li key={slug}>
+                <Link
+                  className={`categories__link${
+                    category === slug ? "--current" : ""
+                  }`}
+                  to={`/reviews/${slug}?${searchParams}`}
+                >
+                  {dashCaseToHumanReadableString(slug)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </nav>
     </section>
   );

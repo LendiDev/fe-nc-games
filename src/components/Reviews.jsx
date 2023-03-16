@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchReviews } from "../utils/api";
-
 import ReviewCard from "./ReviewCard";
-import SectionHeader from "./SectionHeader";
 
-const Reviews = ({category}) => {
+const Reviews = ({ searchParams, category }) => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +10,8 @@ const Reviews = ({category}) => {
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    fetchReviews({category})
+    setReviews([]);
+    fetchReviews({category, searchParams})
       .then((reviewsData) => {
         setIsLoading(false);
         setReviews(reviewsData.reviews);
@@ -23,11 +22,10 @@ const Reviews = ({category}) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [category]);
+  }, [category, searchParams]);
 
   return (
     <section>
-      <SectionHeader title="Reviews" />
       {error && <p>{error}</p>}
       {isLoading ? (
         <p>Loading...</p>
