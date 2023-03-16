@@ -484,7 +484,6 @@ a.review-card__category:hover {
 /* ------ Votes Component -------- */
 
 .votes {
-  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -605,13 +604,21 @@ a.review-card__category:hover {
 
 /*---- Comment card -----*/
 
+.comment-card__list-item {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment-card__list-item:last-child {
+  border: 0;
+  margin: 0;
+}
+
 .comment-card {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
 }
 
 .comment-card__header {
@@ -645,10 +652,35 @@ a.review-card__category:hover {
 
 .comment-card__actions {
   display: flex;
+  gap: 0.75rem;
+}
+
+.comment-card__button__delete {
+  display: inline-block;
+  border: 0;
+  background-color: #dc554e;
+  color: #fff;
+  padding: 0.15rem 0.75rem;
+  border-radius: 6px;
+}
+
+.comment-card__button__delete:disabled {
+  cursor: default;
+  background-color: #ee7f79;
+}
+
+.comment-card__button__delete:hover {
+  background-color: #ee7f79;
 }
 
 .comment-card__text--error {
   color: rgb(214, 0, 0);
+}
+
+.comment-card__deleted {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
 }
 
 .comment-card__text--deleted {

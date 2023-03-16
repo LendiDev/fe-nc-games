@@ -14,6 +14,7 @@ const CommentCard = ({
   const { user } = useContext(UserContext);
 
   const formattedCreatedAt = formatCreatedAt(created_at);
+  const isLoggedInUserComment = author === user.username;
 
   const handleCommentDeletion = () => {
     setPending(true);
@@ -31,27 +32,41 @@ const CommentCard = ({
 
   if (isDeleted) {
     return (
-      <li>
-        <p className="comment-card__text--deleted">This comment is deleted</p>
+      <li className="comment-card__deleted">
+        <p className="comment-card__text--deleted">Your comment is deleted</p>
       </li>
     );
   }
 
   return (
-    <li>
-      <article>
-        <p>{author[0].toUpperCase()}</p>
-        <p>
-          {author} <time dateTime={created_at}>{formattedCreatedAt}</time>
-        </p>
-        <p>{body}</p>
+    <li className="comment-card__list-item">
+      <article className="comment-card">
+        <div className="comment-card__header">
+          <div className="comment-card__initials">
+            <p className="comment-card__initials__letter">{author[0]}</p>
+          </div>
+          <p>
+            {author} <time dateTime={created_at}>{formattedCreatedAt}</time>
+          </p>
+        </div>
+        <p className="comment-card__body">{body}</p>
         {error && <p className="comment-card__text--error">{error}</p>}
-        <Votes comment_id={comment_id} votes={votes} />
-        {author === user.username && (
-          <button onClick={handleCommentDeletion} disabled={isPending}>
-            {isPending ? "Deleting..." : "Delete"}
-          </button>
-        )}
+        <div className="comment-card__actions">
+          <Votes
+            comment_id={comment_id}
+            votes={votes}
+            dividerPosition={isLoggedInUserComment && 'right'}
+          />
+          {isLoggedInUserComment && (
+            <button
+              className="comment-card__button__delete"
+              onClick={handleCommentDeletion}
+              disabled={isPending}
+            >
+              {isPending ? "Deleting..." : "Delete"}
+            </button>
+          )}
+        </div>
       </article>
     </li>
   );
