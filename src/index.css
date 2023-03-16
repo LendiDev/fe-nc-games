@@ -484,12 +484,21 @@ a.review-card__category:hover {
 /* ------ Votes Component -------- */
 
 .votes {
-  border-left: 1px solid #ddd;
-  padding-left: 0.75rem;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0.35rem;
+}
+
+.votes__divider--left {
+  border-left: 1px solid #ddd;
+  padding-left: 0.75rem;
+}
+
+.votes__divider--right {
+  border-right: 1px solid #ddd;
+  padding-right: 0.75rem;
 }
 
 .votes__icon {
@@ -595,6 +604,48 @@ a.review-card__category:hover {
 }
 
 /*---- Comment card -----*/
+
+.comment-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment-card__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.comment-card__initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 100px;
+  background-color: var(--color-secondary-400);
+}
+
+.comment-card__initials__letter {
+  color: var(--color-content-contrast);
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.comment-card__body {
+  border-left: 2px solid var(--color-primary);
+  padding-left: calc(1.7rem / 2);
+  margin-left: calc(1.7rem / 2);
+}
+
+.comment-card__actions {
+  display: flex;
+}
 
 .comment-card__text--error {
   color: rgb(214, 0, 0);

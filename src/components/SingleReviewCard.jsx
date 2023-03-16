@@ -51,7 +51,7 @@ const SingleReviewCard = ({
           <CommentsCount
             comment_count={commentsLength || comment_count}
           />
-          <Votes review_id={review_id} votes={votes} />
+          <Votes review_id={review_id} votes={votes} dividerPosition='left' />
         </div>
       </article>
     </section>
