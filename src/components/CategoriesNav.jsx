@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { fetchCategories } from "../utils/api";
 import { dashCaseToHumanReadableString } from "../utils/dashCaseToHumanReadableString";
+import LoadingSpinner from "./LoadingSpinner";
 
-const CategoriesNav = ({ category, searchParams = '' }) => {
+const CategoriesNav = ({ category, searchParams = "" }) => {
   const [categories, setCategories] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -30,7 +31,9 @@ const CategoriesNav = ({ category, searchParams = '' }) => {
       <nav className="categories">
         {error && <p className="categories--loading">{error}</p>}
         {isLoading && (
-          <p className="categories--loading">Loading categories...</p>
+          <div className="categories--loading" aria-label="Loading categories...">
+            <LoadingSpinner />
+          </div>
         )}
         {categories && (
           <ul className="categories__list" aria-label="Categories">

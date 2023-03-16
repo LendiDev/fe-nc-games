@@ -238,9 +238,11 @@ p {
 }
 
 .categories--loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  text-align: center;
-  align-self: center;
 }
 
 .categories__list {
@@ -562,7 +564,7 @@ a.review-card__category:hover {
 
 /*----- Loading spinner ------*/
 
-.loader {
+.loading-spinner {
   border: 5px solid #f3f3f3;
   border-top: 5px solid var(--color-primary);
   border-radius: 50%;
