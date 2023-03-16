@@ -6,7 +6,7 @@ import { useIsMobile } from "../hooks/useIsMobile";
 const NavigationBar = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
   const [currentPage, setCurrentPage] = useState("");
 
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const isMobile = useIsMobile();
   const location = useLocation();
 
@@ -31,6 +31,10 @@ const NavigationBar = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
 
   const handleClick = () => {
     setIsMobileNavOpened(false);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
   };
 
   return (
@@ -63,9 +67,7 @@ const NavigationBar = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
         </li>
         {user && isMobile && (
           <li>
-            <Link to="/user/logout" onClick={handleClick}>
-              Logout
-            </Link>
+            <button className="logout__button" onClick={handleLogout}>Logout</button>
           </li>
         )}
       </ul>

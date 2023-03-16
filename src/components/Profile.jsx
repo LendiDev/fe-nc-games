@@ -4,8 +4,12 @@ import { UserContext } from "../contexts/User.context";
 import { useIsMobile } from "../hooks/useIsMobile";
 
 const Profile = () => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const isMobile = useIsMobile();
+
+  const handleLogout = () => {
+    setUser(null);
+  }
 
   return (
     <div className="main-header-profile">
@@ -18,9 +22,9 @@ const Profile = () => {
             alt={`Profile of ${user.username}`}
           />
           {!isMobile && (
-            <Link className="logout__link" to="/user/logout">
+            <button className="main-header-profile__link" onClick={handleLogout} >
               Logout
-            </Link>
+            </button>
           )}
         </>
       ) : (

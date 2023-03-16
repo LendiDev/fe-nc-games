@@ -136,6 +136,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-bottom: 5rem;
   gap: 1rem;
 }
 
@@ -181,6 +182,7 @@ p {
   background-color: var(--color-secondary-500);
   padding: 0.3rem 0.75rem;
   border-radius: 6px;
+  border: 0;
 }
 
 .main-header-profile__link:hover {
@@ -211,6 +213,7 @@ p {
 
   .main-header__links {
     flex-direction: row;
+    padding-bottom: 0;
   }
 
   .main-header__links a {
@@ -265,9 +268,13 @@ p {
   gap: 1rem;
 }
 
-.logout__link {
-  color: var(--color-secondary-400);
-  font-size: 0.9rem;
+.logout__button {
+  margin-top: 2rem;
+  width: 100%;
+  color: var(--color-content);
+  font-size: 1.5rem;
+  border: 0;
+  background-color: transparent;
 }
 
 @media only screen and (min-width: 38rem) {
