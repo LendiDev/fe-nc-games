@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
 import SectionHeader from "../components/SectionHeader";
 import { UserContext } from "../contexts/User.context";
@@ -12,6 +12,7 @@ const LoginPage = () => {
   const [error, setError] = useState(null);
 
   const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) {
@@ -40,6 +41,7 @@ const LoginPage = () => {
     );
 
     setUser(userSelected);
+    navigate(-1);
   };
 
   const handleChangeUserNameSelected = (e) => {
