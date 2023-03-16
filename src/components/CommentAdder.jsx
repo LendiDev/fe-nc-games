@@ -8,16 +8,14 @@ const CommentAdder = ({ review_id, setComments }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const {
-    user: { username },
-  } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const handleSubmitComment = (e) => {
     e.preventDefault();
 
     setIsLoading(true);
     setError(null);
-    postNewComment(review_id, { body: commentBody, username })
+    postNewComment(review_id, { body: commentBody, user: user.username })
       .then((comment) => {
         setComments((comments) => {
           return [{ ...comment, created_at: "just now" }, ...comments];

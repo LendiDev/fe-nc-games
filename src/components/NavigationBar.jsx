@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../contexts/User.context";
 import { Link, useLocation } from "react-router-dom";
 
 const NavigationBar = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
   const [currentPage, setCurrentPage] = useState("");
 
+  const { user } = useContext(UserContext);
   const location = useLocation();
 
   const getCurrentPage = ({ pathname }) => {
@@ -57,6 +59,13 @@ const NavigationBar = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
             Reviews
           </Link>
         </li>
+        {user && (
+          <li>
+            <Link to="/user/logout" onClick={handleClick}>
+              Logout
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );
