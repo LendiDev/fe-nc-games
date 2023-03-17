@@ -8,7 +8,11 @@ export const fetchCategories = () => {
   });
 };
 
-export const fetchReviews = ({ category, limit = 50, searchParams = {} }) => {
+export const fetchReviews = ({
+  category,
+  limit = 10,
+  searchParams = {},
+}) => {
   const searchParamsObject = Object.fromEntries(searchParams);
 
   return reviewsApi

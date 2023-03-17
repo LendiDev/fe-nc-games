@@ -1,12 +1,12 @@
-import { useEffect, useState, useContext } from "react";
-import { UserContext } from "../contexts/User.context";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 import { useIsMobile } from "../hooks/useIsMobile";
 
 const NavigationBar = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
   const [currentPage, setCurrentPage] = useState("");
 
-  const { user } = useContext(UserContext);
+  const { user, logout } = useAuth();
   const isMobile = useIsMobile();
   const location = useLocation();
 
@@ -31,6 +31,10 @@ const NavigationBar = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
 
   const handleClick = () => {
     setIsMobileNavOpened(false);
+  };
+
+  const handleLogout = () => {
+    logout();
   };
 
   return (
@@ -63,9 +67,7 @@ const NavigationBar = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
         </li>
         {user && isMobile && (
           <li>
-            <Link to="/user/logout" onClick={handleClick}>
-              Logout
-            </Link>
+            <button className="logout__button" onClick={handleLogout}>Logout</button>
           </li>
         )}
       </ul>

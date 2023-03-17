@@ -1,8 +1,8 @@
-import { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
 import SectionHeader from "../components/SectionHeader";
-import { UserContext } from "../contexts/User.context";
+import useAuth from "../hooks/useAuth";
 import { fetchUsers } from "../utils/api";
 
 const LoginPage = () => {
@@ -11,9 +11,11 @@ const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  const { user, login } = useAuth();
 
   useEffect(() => {
+    console.log(user);
     if (!user) {
       setIsLoading(true);
       fetchUsers()
@@ -27,7 +29,7 @@ const LoginPage = () => {
         .finally(() => {
           setIsLoading(false);
         });
-    }
+    } 
   }, [user]);
 
   const handleSubmitLogin = (e) => {
@@ -39,7 +41,8 @@ const LoginPage = () => {
       (user) => user.username === userNameSelected
     );
 
-    setUser(userSelected);
+    login(userSelected);
+    navigate(-1);
   };
 
   const handleChangeUserNameSelected = (e) => {
@@ -50,7 +53,7 @@ const LoginPage = () => {
     <main>
       <SectionHeader title="Login" />
       <section className="login">
-        {isLoading && <LoadingSpinner />}
+        {isLoading && <LoadingSpinner flexLoading />}
         {error && <p>{error}</p>}
         {users.length > 0 && !user && (
           <form className="login__form" onSubmit={handleSubmitLogin}>

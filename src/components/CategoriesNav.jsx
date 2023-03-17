@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { CategoriesContext } from "../contexts/Categories.context";
 import { fetchCategories } from "../utils/api";
 import { dashCaseToHumanReadableString } from "../utils/dashCaseToHumanReadableString";
 import LoadingSpinner from "./LoadingSpinner";
 
 const CategoriesNav = ({ category, searchParams = "" }) => {
-  const [categories, setCategories] = useState(null);
+  const { categories, setCategories } = useContext(CategoriesContext);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -13,28 +14,24 @@ const CategoriesNav = ({ category, searchParams = "" }) => {
 
   useEffect(() => {
     setLoading(true);
-    setError(false);
+    setError(null);
     fetchCategories()
       .then((categories) => {
         setCategories(categories);
       })
       .catch(() => {
-        setError("Something went wrong... Couldn't fetch categories");
+        setError("Couldn't fetch categories");
       })
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [setCategories]);
 
   return (
     <section>
       <nav className="categories">
-        {error && <p className="categories--loading">{error}</p>}
-        {isLoading && (
-          <div className="categories--loading" aria-label="Loading categories...">
-            <LoadingSpinner />
-          </div>
-        )}
+        {error && !categories && <p className="categories--error">{error}</p>}
+        {isLoading && !categories && <LoadingSpinner what="categories" flexLoading />}
         {categories && (
           <ul className="categories__list" aria-label="Categories">
             <li>
