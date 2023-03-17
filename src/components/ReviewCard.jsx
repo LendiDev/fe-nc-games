@@ -28,7 +28,7 @@ const ReviewCard = ({
       <article className="review-card">
         <img className="review-card__image" src={review_img_url} alt={title} />
         <div className="review-card__content">
-          <Link to={`/review/${review_id}`}>
+          <Link className="review-card__header__link" to={`/review/${review_id}`}>
             <h3>{title}</h3>
           </Link>
           <Link
