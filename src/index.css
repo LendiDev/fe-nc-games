@@ -539,20 +539,24 @@ a.review-card__category:hover {
   border-radius: 6px;
 }
 
-.votes--voted_up {
-  color: rgb(0, 123, 33);
-}
-
-.votes--voted_down {
-  color: red;
-}
-
 .votes__upvote:hover {
   color: rgb(0, 123, 33);
 }
 
 .votes__downvote:hover {
   color: red;
+}
+
+.votes__upvote:disabled,
+.votes__upvote--disabled {
+  color: rgb(0, 123, 33);
+  background-color: rgb(192, 229, 203);
+}
+
+.votes__downvote:disabled,
+.votes__downvote--disabled {
+  color: red;
+  background-color: rgb(250, 216, 216);
 }
 
 /* ------ Comment Count Component -------- */
