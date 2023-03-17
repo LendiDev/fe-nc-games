@@ -29,13 +29,13 @@ const LoginPage = () => {
         .finally(() => {
           setIsLoading(false);
         });
-    } 
+    }
   }, [user]);
 
   const handleSubmitLogin = (e) => {
     e.preventDefault();
 
-    if (!userNameSelected) return;
+    if (!userNameSelected || userNameSelected === "") return;
 
     const userSelected = users.find(
       (user) => user.username === userNameSelected
@@ -63,14 +63,18 @@ const LoginPage = () => {
               id="username"
               onChange={handleChangeUserNameSelected}
             >
-              <option>Select username...</option>
+              <option value="">Select username...</option>
               {users.map(({ username }) => (
                 <option key={username} value={username}>
                   {username}
                 </option>
               ))}
             </select>
-            <button className="login__button" type="submit">
+            <button
+              className="login__button"
+              type="submit"
+              disabled={!userNameSelected || userNameSelected === ""}
+            >
               Login
             </button>
           </form>
