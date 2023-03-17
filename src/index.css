@@ -40,6 +40,7 @@ header {
 main {
   max-width: 60rem;
   margin: 1.5rem auto 0;
+  margin-bottom: 5rem;
   padding: 0 1rem 2rem 1rem;
 }
 
@@ -810,4 +811,49 @@ a.review-card__category:hover {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/*----- Pagination ------*/
+
+.pagination {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.pagination li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: 0 0.25rem;
+  border-radius: 100px;
+}
+
+.pagination li:hover {
+  cursor: pointer;
+  background-color: var(--color-primary);
+  color: var(--color-content-contrast);
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.pagination__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination__button--hide {
+  pointer-events: none;
+  display: none !important;
+}
+
+.pagination__page--selected {
+  background-color: var(--color-primary);
+  color: var(--color-content-contrast);
 }

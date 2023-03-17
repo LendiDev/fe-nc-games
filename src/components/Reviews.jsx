@@ -2,20 +2,30 @@ import { useEffect, useState } from "react";
 import { errors } from "../data/errors";
 import { fetchReviews } from "../utils/api";
 import LoadingSpinner from "./LoadingSpinner";
+import Pagination from "./Paginations";
 import ReviewCard from "./ReviewCard";
 
-const Reviews = ({ searchParams, category, error, setError }) => {
+const Reviews = ({
+  searchParams,
+  category,
+  error,
+  setError,
+  pagination = true,
+}) => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     setIsLoading(true);
     setError(null);
     setReviews([]);
-    fetchReviews({ category, searchParams })
+    fetchReviews({ category, searchParams, page: currentPage, limit: 5 })
       .then((reviewsData) => {
         setIsLoading(false);
         setReviews(reviewsData.reviews);
+        setTotalPages(reviewsData.max_pages);
       })
       .catch((error) => {
         if (error?.response?.status === 404) {
@@ -31,7 +41,11 @@ const Reviews = ({ searchParams, category, error, setError }) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [category, searchParams, setError]);
+  }, [currentPage, category, searchParams, setError]);
+
+  const onPageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
   return (
     <section>
@@ -39,11 +53,21 @@ const Reviews = ({ searchParams, category, error, setError }) => {
       {isLoading ? (
         <LoadingSpinner flexLoading size={50} borderWidth={8} topOffset={50} />
       ) : (
-        <ul>
-          {reviews.map((review) => (
-            <ReviewCard key={review.review_id} review={review} />
-          ))}
-        </ul>
+        <>
+          <ul>
+            {reviews.map((review) => (
+              <ReviewCard key={review.review_id} review={review} />
+            ))}
+          </ul>
+          {pagination && (
+            <Pagination
+              onPageChange={onPageChange}
+              totalPages={totalPages}
+              currentPage={currentPage}
+              siblingCount={3}
+            />
+          )}
+        </>
       )}
     </section>
   );
