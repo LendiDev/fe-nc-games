@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { errors } from "../data/errors";
 import { fetchReviews } from "../utils/api";
 import LoadingSpinner from "./LoadingSpinner";
