@@ -27,11 +27,15 @@ const CategoriesNav = ({ category, searchParams = "" }) => {
       });
   }, [setCategories]);
 
+  const filteredSearchParams = searchParams.toString().replace(/p=[\d]+/, "");
+
   return (
     <section>
       <nav className="categories">
         {error && !categories && <p className="categories--error">{error}</p>}
-        {isLoading && !categories && <LoadingSpinner what="categories" flexLoading />}
+        {isLoading && !categories && (
+          <LoadingSpinner what="categories" flexLoading />
+        )}
         {categories && (
           <ul className="categories__list" aria-label="Categories">
             <li>
@@ -39,7 +43,7 @@ const CategoriesNav = ({ category, searchParams = "" }) => {
                 className={`categories__link${
                   !category && pathname !== "/" ? "--current" : ""
                 }`}
-                to={`/reviews?${searchParams}`}
+                to={`/reviews?${filteredSearchParams}`}
               >
                 All
               </Link>
@@ -50,7 +54,7 @@ const CategoriesNav = ({ category, searchParams = "" }) => {
                   className={`categories__link${
                     category === slug ? "--current" : ""
                   }`}
-                  to={`/reviews/${slug}?${searchParams}`}
+                  to={`/reviews/${slug}?${filteredSearchParams}`}
                 >
                   {dashCaseToHumanReadableString(slug)}
                 </Link>
