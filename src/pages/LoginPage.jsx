@@ -18,7 +18,6 @@ const LoginPage = () => {
   const { user, login } = useAuth();
 
   useEffect(() => {
-    console.log(user);
     if (!user) {
       setIsLoading(true);
       fetchUsers()
