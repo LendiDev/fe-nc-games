@@ -3,7 +3,8 @@ import { UserContext } from "../contexts/User.context";
 import { fetchUser } from "../utils/api";
 
 const useAuth = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, authChecked, setAuthChecked } =
+    useContext(UserContext);
 
   const useCheckAuth = () => {
     useEffect(() => {
@@ -15,6 +16,7 @@ const useAuth = () => {
             "https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729",
         });
         localStorage.setItem("visited", true);
+        setAuthChecked(true);
         return;
       }
 
@@ -26,7 +28,10 @@ const useAuth = () => {
         // fetch updates of the user details
         fetchUser(userData.username).then((user) => {
           setUser(user);
+          setAuthChecked(true);
         });
+      } else {
+        setAuthChecked(true);
       }
     }, []);
   };
@@ -41,7 +46,7 @@ const useAuth = () => {
     localStorage.removeItem("user", null);
   };
 
-  return { user, login, logout, useCheckAuth };
+  return { user, login, logout, useCheckAuth, authChecked, setAuthChecked };
 };
 
 export default useAuth;

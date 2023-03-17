@@ -3,16 +3,16 @@ import useAuth from "../hooks/useAuth";
 import { useIsMobile } from "../hooks/useIsMobile";
 
 const Profile = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, authChecked } = useAuth();
   const isMobile = useIsMobile();
 
   const handleLogout = () => {
     logout(null);
-  }
+  };
 
   return (
     <div className="main-header-profile">
-      {user ? (
+      {user && authChecked && (
         <>
           <p className="main-header-profile__text">{user.username}</p>
           <img
@@ -21,12 +21,16 @@ const Profile = () => {
             alt={`Profile of ${user.username}`}
           />
           {!isMobile && (
-            <button className="main-header-profile__link" onClick={handleLogout} >
+            <button
+              className="main-header-profile__link"
+              onClick={handleLogout}
+            >
               Logout
             </button>
           )}
         </>
-      ) : (
+      )}
+      {!user && authChecked && (
         <Link className="main-header-profile__link" to="/user/login">
           Login
         </Link>
