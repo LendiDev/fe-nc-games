@@ -34,6 +34,7 @@ const ReviewsPage = () => {
         setError={setError}
         category={category_slug}
         searchParams={searchParams}
+        setSearchParams={setSearchParams}
       />
     </main>
   );

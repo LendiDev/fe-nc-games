@@ -11,6 +11,7 @@ const Reviews = ({
   error,
   setError,
   pagination = true,
+  setSearchParams,
 }) => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,11 +22,15 @@ const Reviews = ({
     setIsLoading(true);
     setError(null);
     setReviews([]);
-    fetchReviews({ category, searchParams, page: currentPage, limit: 5 })
+    fetchReviews({ category, searchParams, limit: 5 })
       .then((reviewsData) => {
         setIsLoading(false);
         setReviews(reviewsData.reviews);
         setTotalPages(reviewsData.max_pages);
+
+        if (searchParams.get('p') > reviewsData.max_pages || reviewsData.max_pages < 1) {
+          setError(errors.reviews.pageNotFound);
+        }
       })
       .catch((error) => {
         if (error?.response?.status === 404) {
@@ -45,6 +50,10 @@ const Reviews = ({
 
   const onPageChange = (newPage) => {
     setCurrentPage(newPage);
+    setSearchParams((params) => ({
+      ...Object.fromEntries(params),
+      p: newPage,
+    }));
   };
 
   return (

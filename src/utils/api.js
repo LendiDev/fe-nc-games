@@ -11,14 +11,13 @@ export const fetchCategories = () => {
 export const fetchReviews = ({
   category,
   limit = 10,
-  page = 1,
   searchParams = {},
 }) => {
   const searchParamsObject = Object.fromEntries(searchParams);
 
   return reviewsApi
     .get("/reviews", {
-      params: { category, limit, p: page, ...searchParamsObject },
+      params: { category, limit, ...searchParamsObject },
     })
     .then(({ data }) => {
       return data;

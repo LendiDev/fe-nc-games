@@ -14,6 +14,12 @@ export const errors = {
       message:
         "Oops, it looks like there was a problem with your request. Please check your URL and try again.",
     },
+    pageNotFound: {
+      statusCode: 404,
+      header: "Page not found",
+      message:
+        "Oops, it looks like there was a problem with your request. Please check your URL and try again.",
+    },
     notFound: "Something went wrong. Couldn't fetch reviews.",
   },
   review: {
