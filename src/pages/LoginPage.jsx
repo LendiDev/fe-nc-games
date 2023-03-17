@@ -3,9 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
 import SectionHeader from "../components/SectionHeader";
 import useAuth from "../hooks/useAuth";
+import useTitle from "../hooks/useTitle";
 import { fetchUsers } from "../utils/api";
 
 const LoginPage = () => {
+  useTitle('Login');
+
   const [userNameSelected, setUserNameSelected] = useState(null);
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

@@ -8,8 +8,11 @@ import Comments from "../components/Comments";
 import SingleReviewCard from "../components/SingleReviewCard";
 import ErrorPage from "./ErrorPage";
 import LoadingSpinner from "../components/LoadingSpinner";
+import useTitle from "../hooks/useTitle";
 
 const SingleReviewPage = () => {
+  useTitle("Review");
+
   const { review_id } = useParams();
   const [review, setReview] = useState(null);
   const [comments, setComments] = useState(null);

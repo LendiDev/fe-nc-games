@@ -1,11 +1,20 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CategoriesContext } from "../contexts/Categories.context";
+import useTitle from "../hooks/useTitle";
 import { fetchCategories } from "../utils/api";
 import { dashCaseToHumanReadableString } from "../utils/dashCaseToHumanReadableString";
 import LoadingSpinner from "./LoadingSpinner";
 
 const CategoriesNav = ({ category, searchParams = "" }) => {
+  useTitle(
+    `${
+      category !== undefined
+        ? `${dashCaseToHumanReadableString(category)} | `
+        : ""
+    }Reviews`
+  );
+
   const { categories, setCategories } = useContext(CategoriesContext);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);

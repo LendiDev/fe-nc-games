@@ -4,8 +4,10 @@ import badRequestLottie from "../assets/lottie/400.json";
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import SectionHeader from "../components/SectionHeader";
+import useTitle from "../hooks/useTitle";
 
 const ErrorPage = ({ statusCode, header, message }) => {
+  useTitle(`${statusCode} - ${header}`)
   const navigate = useNavigate();
 
   const handleBackToSafety = () => {
