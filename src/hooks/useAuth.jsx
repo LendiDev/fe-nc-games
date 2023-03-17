@@ -7,6 +7,16 @@ const useAuth = () => {
 
   const useCheckAuth = () => {
     useEffect(() => {
+      if (!localStorage.getItem("visited")) {
+        login({
+          username: "happyamy2016",
+          name: "Amy Happy",
+          avatar_url:
+            "https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729",
+        });
+        localStorage.setItem("visited", true);
+      }
+
       if (localStorage.getItem("user")) {
         const userDataString = localStorage.getItem("user");
         const userData = JSON.parse(userDataString);
