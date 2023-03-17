@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { errors } from "../data/errors";
 import { fetchReviews } from "../utils/api";
 import LoadingSpinner from "./LoadingSpinner";
-import Pagination from "./Paginations";
+import Pagination from "./Pagination";
 import ReviewCard from "./ReviewCard";
 
 const Reviews = ({
@@ -28,7 +28,10 @@ const Reviews = ({
         setReviews(reviewsData.reviews);
         setTotalPages(reviewsData.max_pages);
 
-        if (searchParams.get('p') > reviewsData.max_pages || reviewsData.max_pages < 1) {
+        if (
+          searchParams.get("p") > reviewsData.max_pages ||
+          reviewsData.max_pages < 1
+        ) {
           setError(errors.reviews.pageNotFound);
         }
       })
@@ -55,6 +58,10 @@ const Reviews = ({
       p: newPage,
     }));
   };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [category]);
 
   return (
     <section>

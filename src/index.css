@@ -74,6 +74,10 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: default;
+}
+
 a {
   cursor: pointer;
   text-decoration: none;
@@ -260,6 +264,10 @@ p {
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 6px;
+}
+
+.login__button:disabled {
+  background-color: #cacaca;
 }
 
 .login--logged-in {
