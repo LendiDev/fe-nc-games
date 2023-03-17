@@ -1,14 +1,13 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../contexts/User.context";
+import useAuth from "../hooks/useAuth";
 import { useIsMobile } from "../hooks/useIsMobile";
 
 const Profile = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, logout } = useAuth();
   const isMobile = useIsMobile();
 
   const handleLogout = () => {
-    setUser(null);
+    logout(null);
   }
 
   return (

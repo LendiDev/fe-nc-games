@@ -7,9 +7,12 @@ import HomePage from "./pages/HomePage";
 import SingleReviewPage from "./pages/SingleReviewPage";
 import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/LoginPage";
+import useAuth from "./hooks/useAuth";
 
 function App() {
   const [isMobileNavOpened, setIsMobileNavOpened] = useState(false);
+
+  useAuth().useCheckAuth();
 
   const reviewsPageElement = <ReviewsPage />;
 

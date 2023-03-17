@@ -1,12 +1,12 @@
-import { useEffect, useState, useContext } from "react";
-import { UserContext } from "../contexts/User.context";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 import { useIsMobile } from "../hooks/useIsMobile";
 
 const NavigationBar = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
   const [currentPage, setCurrentPage] = useState("");
 
-  const { user, setUser } = useContext(UserContext);
+  const { user, logout } = useAuth();
   const isMobile = useIsMobile();
   const location = useLocation();
 
@@ -34,7 +34,7 @@ const NavigationBar = ({ isMobileNavOpened, setIsMobileNavOpened }) => {
   };
 
   const handleLogout = () => {
-    setUser(null);
+    logout();
   };
 
   return (

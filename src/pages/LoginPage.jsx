@@ -1,8 +1,8 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
 import SectionHeader from "../components/SectionHeader";
-import { UserContext } from "../contexts/User.context";
+import useAuth from "../hooks/useAuth";
 import { fetchUsers } from "../utils/api";
 
 const LoginPage = () => {
@@ -11,8 +11,8 @@ const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const { user, login } = useAuth();
 
   useEffect(() => {
     if (!user) {
@@ -40,7 +40,7 @@ const LoginPage = () => {
       (user) => user.username === userNameSelected
     );
 
-    setUser(userSelected);
+    login(userSelected);
     navigate(-1);
   };
 
