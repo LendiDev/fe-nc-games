@@ -25,8 +25,6 @@ const Pagination = ({
     onPageChange(currentPage - 1);
   };
 
-  console.log(currentPage)
-
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
     <ul className="pagination">
