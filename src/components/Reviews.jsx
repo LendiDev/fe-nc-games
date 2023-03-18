@@ -60,8 +60,8 @@ const Reviews = ({
   };
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [category]);
+    setCurrentPage(+searchParams.get('p') || 1);
+  }, [category, searchParams]);
 
   return (
     <section>
