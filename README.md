@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# NC BoardGames Front-End #
+Welcome to the NC BoardGames Front-End repository! This project is a front-end React application that serves as a platform for board game enthusiasts to share and explore reviews, comments, users, and categories related to board games.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Users can access reviews on board games from other users and leave comments on those reviews. They can also post and delete comments for the reviews, as well as up vote and down vote reviews as well as comments. Additionally, users can sort reviews by category, order by title, date, number of comments, and more.
 
-## Available Scripts
+<img src="https://i.ibb.co/XDyfcPN/Screenshot-2023-03-19-at-22-31-26.png" alt="Screenshot of Reviews page" width=50% style="border-radius: 12px; border: 1px solid #eee">
 
-In the project directory, you can run:
+# Deployed Version #
+Check out the live version of the app here: https://nc-bg.netlify.app/
 
-### `npm start`
+# Back-End Repository #
+The back-end for this project is hosted in a separate repository. You can find it here: https://github.com/LendiDev/backend-nc-games
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Prerequisites #
+Node.js (minimum version: 14.x.x)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To check your Node version, run the following command in your terminal:
 
-### `npm test`
+```sh
+node --version
+```
+Make sure your Node version is at least 14.x.x.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Running the Project Locally #
+To run the project on your local machine, follow these steps:
 
-### `npm run build`
+Clone the repository:
+```sh
+git clone https://github.com/LendiDev/fe-nc-games.git
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Change into the project directory:
+```sh
+cd fe-nc-games
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install the required dependencies:
+```sh
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Start the development server:
+```sh
+npm start
+```
 
-### `npm run eject`
+The application should now be running on http://localhost:3000.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Usage #
+Once the app is running, you can:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Browse through the list of board game reviews
+* Filter reviews by categories
+* Sort reviews (in asc or desc order) by title, date, number of comments, and more
+* View detailed information about individual reviews and their associated comments
+* Add and delete comments on reviews
+* Up vote and down vote reviews and comments
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Happy exploring!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Challenges Faced #
+Throughout the development of the NC BoardGames Front-End, I faced several challenges that helped me grow as developers and improve the overall quality of the project. Some of the key challenges include:
 
-## Learn More
+1. <b>State management</b>: Handling complex state interactions and ensuring that data was properly passed down through components required careful planning and implementation. I utilized React's built-in state management, as well as custom hooks and context, to address these challenges.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. <b>Responsive design</b>: Creating a responsive and user-friendly design that works seamlessly on various devices and screen sizes was a priority. I used CSS Grid, Flex, and media queries to ensure our app looks great and functions well on a wide range of devices.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. <b>Optimizing performance</b>: Ensuring that the application performed well, especially when dealing with large amounts of data, was a challenge. I employed pagination to improve the app's overall performance.
 
-### Code Splitting
+4. <b>Asynchronous data fetching</b>: Managing API calls and handling errors gracefully was another challenge I faced. I used the `axios` library to make API calls and implemented error handling to ensure a smooth user experience.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Overall, these challenges not only helped me improve the quality of the NC BoardGames Project but also taught me valuable lessons that I will carry forward in our future projects.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
