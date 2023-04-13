@@ -3,7 +3,7 @@ Welcome to the NC BoardGames Front-End repository! This project is a front-end R
 
 Users can access reviews on board games from other users and leave comments on those reviews. They can also post and delete comments for the reviews, as well as up vote and down vote reviews as well as comments. Additionally, users can sort reviews by category, order by title, date, number of comments, and more.
 
-<img src="https://i.ibb.co/XDyfcPN/Screenshot-2023-03-19-at-22-31-26.png" alt="Screenshot of Reviews page" width=50%>
+<p align="center"><img src="https://i.ibb.co/pRczrHc/image.png" alt="Screenshot of Reviews page" width=60%></p>
 
 ## Deployed Version
 Check out the live version of the app here: https://nc-bg.netlify.app/
